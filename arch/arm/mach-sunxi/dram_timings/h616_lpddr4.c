@@ -1,12 +1,10 @@
 /*
- * sun50i H616 DDR3-1333 timings, as programmed by Allwinner's boot0
+ * sun50i H616 LPDDR4-2133 timings, as programmed by Allwinner's boot0
+ * for orangepi zero3 with the H618 and LPDDR4 memory.
  *
- * The chips are probably able to be driven by a faster clock, but boot0
- * uses a more conservative timing (as usual).
- *
- * (C) Copyright 2020 Jernej Skrabec <jernej.skrabec@siol.net>
- * Based on H6 DDR3 timings:
- * (C) Copyright 2018,2019 Arm Ltd.
+ * (C) Copyright 2023 Mikhail Kalashnikov <iuncuim@gmail.com>
+ *   Based on H6 DDR3 timings:
+ *   (C) Copyright 2020 Jernej Skrabec <jernej.skrabec@siol.net>
  *
  * SPDX-License-Identifier:	GPL-2.0+
  */
@@ -30,7 +28,7 @@ void mctl_set_timing_params(struct dram_para *para)
 	u8 trp		= ns_to_t(21);		/* JEDEC: >= 13.75 ns */
 	u8 tras		= ns_to_t(42);		/* JEDEC >= 36 ns, <= 9*trefi */
 	u16 trefi	= ns_to_t(3904) / 32;	/* JEDEC: 7.8us@Tcase <= 85C */
-	u16 trfc	= ns_to_t(180);		/* JEDEC: 160 ns for 2Gb */
+	u16 trfc	= ns_to_t(280);		/* JEDEC: 160 ns for 2Gb */
 	u16 txsr	= ns_to_t(190);		/* ? */
 
 	u8 tmrw		= max(ns_to_t(14), 5);	/* ? */
